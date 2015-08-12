@@ -6,8 +6,18 @@
   <title>Blockly Demo:</title>
   <link rel="stylesheet" href="style.css">
   <script src="/storage.js"></script>
-  <script src="../../blockly_compressed.js"></script>
-  <script src="../../blocks_compressed.js"></script>
+  <!-- <script src="../../blockly_compressed.js"></script>
+  <script src="../../blocks_compressed.js"></script> -->
+  <script src="../../blockly_uncompressed.js"></script>
+  <script src="../../javascript_compressed.js"></script>
+  <script src="../../blocks/colour.js"></script>
+  <script src="../../blocks/lists.js"></script>
+  <script src="../../blocks/logic.js"></script>
+  <script src="../../blocks/loops.js"></script>
+  <script src="../../blocks/math.js"></script>
+  <script src="../../blocks/procedures.js"></script>
+  <script src="../../blocks/text.js"></script>
+  <script src="../../blocks/variables.js"></script>
   <script src="../../javascript_compressed.js"></script>
   <script src="../../python_compressed.js"></script>
   <script src="../../php_compressed.js"></script>
@@ -70,25 +80,25 @@
   <textarea id="content_xml" class="content" wrap="off"></textarea>
 
   <xml id="toolbox" style="display: none">
-    <category id="catLogic">
-      <block type="controls_if"></block>
+    <category id="catLogic"> 
+      <block type="controls_if"></block>  <!--  Definitely need this one -->
       <block type="logic_compare"></block>
       <block type="logic_operation"></block>
-      <block type="logic_negate"></block>
+    <!--   <block type="logic_negate"></block>
       <block type="logic_boolean"></block>
       <block type="logic_null"></block>
-      <block type="logic_ternary"></block>
+      <block type="logic_ternary"></block> -->  <!-- can do without these in theory -->
     </category>
-    <category id="catLoops">
-      <block type="controls_repeat_ext">
+    <category id="catLoops">  <!-- we'll start with just while and break -->
+      <!-- <block type="controls_repeat_ext">
         <value name="TIMES">
           <block type="math_number">
             <field name="NUM">10</field>
           </block>
         </value>
-      </block>
+      </block> -->
       <block type="controls_whileUntil"></block>
-      <block type="controls_for">
+      <!-- <block type="controls_for">
         <value name="FROM">
           <block type="math_number">
             <field name="NUM">1</field>
@@ -105,13 +115,13 @@
           </block>
         </value>
       </block>
-      <block type="controls_forEach"></block>
+      <block type="controls_forEach"></block> -->
       <block type="controls_flow_statements"></block>
     </category>
     <category id="catMath">
       <block type="math_number"></block>
-      <block type="math_arithmetic"></block>
-      <block type="math_single"></block>
+      <block type="math_arithmetic"></block>  <!-- might want the advanced math block, but we'll see -->
+     <!--  <block type="math_single"></block>
       <block type="math_trig"></block>
       <block type="math_constant"></block>
       <block type="math_number_property"></block>
@@ -136,7 +146,7 @@
             <field name="NUM">100</field>
           </block>
         </value>
-      </block>
+      </block> -->
       <block type="math_random_int">
         <value name="FROM">
           <block type="math_number">
@@ -149,11 +159,11 @@
           </block>
         </value>
       </block>
-      <block type="math_random_float"></block>
+      <!-- <block type="math_random_float"></block> --> -->
     </category>
     <category id="catText">
       <block type="text"></block>
-      <block type="text_join"></block>
+      <!-- <block type="text_join"></block>
       <block type="text_append">
         <value name="TEXT">
           <block type="text"></block>
@@ -189,20 +199,20 @@
         <value name="TEXT">
           <block type="text"></block>
         </value>
-      </block>
+      </block> -->  <!-- Working from the assumption that we don't need much text processing. -->
     </category>
     <category id="catLists">
-      <block type="lists_create_empty"></block>
-      <block type="lists_create_with"></block>
-      <block type="lists_repeat">
+      <!-- <block type="lists_create_empty"></block> -->
+      <block type="lists_create_with"></block>  <!-- only need one way to initialize a list -->
+     <!--  <block type="lists_repeat">
         <value name="NUM">
           <block type="math_number">
             <field name="NUM">5</field>
           </block>
         </value>
-      </block>
+      </block> -->
       <block type="lists_length"></block>
-      <block type="lists_isEmpty"></block>
+  <!--     <block type="lists_isEmpty"></block> -->
       <block type="lists_indexOf">
         <value name="VALUE">
           <block type="variables_get">
@@ -224,7 +234,7 @@
           </block>
         </value>
       </block>
-      <block type="lists_getSublist">
+      <!-- <block type="lists_getSublist">
         <value name="LIST">
           <block type="variables_get">
             <field name="VAR" class="listVar">...</field>
@@ -237,9 +247,9 @@
             <field name="TEXT">,</field>
           </block>
         </value>
-      </block>
+      </block> -->
     </category>
-    <category id="catColour">
+    <category id="catColour">  <!-- Think I'll leave all the colours for now. -->
       <block type="colour_picker"></block>
       <block type="colour_random"></block>
       <block type="colour_rgb">
