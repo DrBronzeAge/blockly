@@ -593,18 +593,23 @@ Blockly.Block.prototype.setTooltip = function(newTip) {
 
 /**
  * Get the colour of a block.
- * @return {number} HSV hue value.
+ * @return {list} HSV hue, saturation and value.
  */
 Blockly.Block.prototype.getColour = function() {
-  return this.colourHue_;
+  var colourElements=[this.colourHue_,this.colourSaturation_,this.colourValue_];
+  return colourElements;
 };
 
 /**
  * Change the colour of a block.
  * @param {number} colourHue HSV hue value.
+ * @param {0> number <1} hsvSaturation is the saturation
+ * @param {0> number <1} hsvValue is the value
  */
-Blockly.Block.prototype.setColour = function(colourHue) {
+Blockly.Block.prototype.setColour = function(colourHue,hsvSaturation,hsvValue) {
   this.colourHue_ = colourHue;
+  this.colourSaturation_=hsvSaturation;
+  this.colourValue_=hsvValue;
   if (this.rendered) {
     this.updateColour();
   }
