@@ -30,9 +30,14 @@ goog.require('Blockly.Blocks');
 
 
 /**
- * Common HSV hue for all blocks in this category.
+ * Common HSV hue, saturation and value for all blocks in this category.
+ * set to ~ffe900  the yellow from our "toy colours"
  */
-Blockly.Blocks.logic.HUE = 210;
+Blockly.Blocks.logic.HUE = 55;
+
+Blockly.Blocks.logic.Saturation=0.999;
+
+Blockly.Blocks.logic.Value=0.999;
 
 Blockly.Blocks['controls_if'] = {
   /**
@@ -41,7 +46,9 @@ Blockly.Blocks['controls_if'] = {
    */
   init: function() {
     this.setHelpUrl(Blockly.Msg.CONTROLS_IF_HELPURL);
-    this.setColour(Blockly.Blocks.logic.HUE);
+    this.setColour(Blockly.Blocks.logic.HUE,Blockly.Blocks.logic.Saturation, Blockly.Blocks.logic.Value);
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldImage("../../images/if.png",120,120,"*"));
     this.appendValueInput('IF0')
         .setCheck('Boolean')
         .appendField(Blockly.Msg.CONTROLS_IF_MSG_IF);
@@ -282,7 +289,9 @@ Blockly.Blocks['logic_compare'] = {
           ['\u2265', 'GTE']
         ];
     this.setHelpUrl(Blockly.Msg.LOGIC_COMPARE_HELPURL);
-    this.setColour(Blockly.Blocks.logic.HUE);
+    this.setColour(Blockly.Blocks.logic.HUE,Blockly.Blocks.logic.Saturation, Blockly.Blocks.logic.Value);
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldImage("../../images/compare.jpg",120,120,"*"));    
     this.setOutput(true, 'Boolean');
     this.appendValueInput('A');
     this.appendValueInput('B')
@@ -339,7 +348,9 @@ Blockly.Blocks['logic_operation'] = {
         [[Blockly.Msg.LOGIC_OPERATION_AND, 'AND'],
          [Blockly.Msg.LOGIC_OPERATION_OR, 'OR']];
     this.setHelpUrl(Blockly.Msg.LOGIC_OPERATION_HELPURL);
-    this.setColour(Blockly.Blocks.logic.HUE);
+    this.setColour(Blockly.Blocks.logic.HUE,Blockly.Blocks.logic.Saturation, Blockly.Blocks.logic.Value);
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldImage("../../images/logic_operation.jpg",120,120,"*"));
     this.setOutput(true, 'Boolean');
     this.appendValueInput('A')
         .setCheck('Boolean');

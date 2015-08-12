@@ -29,10 +29,13 @@ goog.provide('Blockly.Blocks.texts');
 goog.require('Blockly.Blocks');
 
 
-/**
- * Common HSV hue for all blocks in this category.
+/*/**
+ * Common HSV hue, saturation and value for all blocks in this category.
+ * this is ~ #F37C8D, the lighter pink from the brand guide
  */
-Blockly.Blocks.texts.HUE = 160;
+Blockly.Blocks.texts.HUE = 351;
+Blockly.Blocks.texts.Saturation=0.49;
+Blockly.Blocks.texts.Value=0.953;
 
 Blockly.Blocks['text'] = {
   /**
@@ -41,7 +44,7 @@ Blockly.Blocks['text'] = {
    */
   init: function() {
     this.setHelpUrl(Blockly.Msg.TEXT_TEXT_HELPURL);
-    this.setColour(Blockly.Blocks.texts.HUE);
+    this.setColour(Blockly.Blocks.texts.HUE,Blockly.Blocks.texts.Saturation,Blockly.Blocks.texts.Value);
     this.appendDummyInput()
         .appendField(this.newQuote_(true))
         .appendField(new Blockly.FieldTextInput(''), 'TEXT')
