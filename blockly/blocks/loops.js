@@ -21,6 +21,7 @@
 /**
  * @fileoverview Loop blocks for Blockly.
  * @author fraser@google.com (Neil Fraser)
+ * I've only updated the code for the loop blocks I plan to use [Chris]
  */
 'use strict';
 
@@ -30,9 +31,14 @@ goog.require('Blockly.Blocks');
 
 
 /**
- * Common HSV hue for all blocks in this category.
+ * Common HSV hue for all blocks in this category.  Now also a common hsv saturation and value
+ * this is ~ HEX: #3CC6AF -- the lighter green from the brand guide.
  */
-Blockly.Blocks.loops.HUE = 120;
+Blockly.Blocks.loops.HUE = 170;
+
+Blockly.Blocks.loops.Saturation=0.697;
+
+Blockly.Blocks.loops.Value=0.776;
 
 Blockly.Blocks['controls_repeat_ext'] = {
   /**
@@ -99,7 +105,9 @@ Blockly.Blocks['controls_whileUntil'] = {
         [[Blockly.Msg.CONTROLS_WHILEUNTIL_OPERATOR_WHILE, 'WHILE'],
          [Blockly.Msg.CONTROLS_WHILEUNTIL_OPERATOR_UNTIL, 'UNTIL']];
     this.setHelpUrl(Blockly.Msg.CONTROLS_WHILEUNTIL_HELPURL);
-    this.setColour(Blockly.Blocks.loops.HUE);
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldImage("../../images/loop.jpg",120,120,"*"))
+    this.setColour(Blockly.Blocks.loops.HUE,Blockly.Blocks.loops.Saturation,Blockly.Blocks.loops.Value);
     this.appendValueInput('BOOL')
         .setCheck('Boolean')
         .appendField(new Blockly.FieldDropdown(OPERATORS), 'MODE');
@@ -275,7 +283,7 @@ Blockly.Blocks['controls_flow_statements'] = {
         [[Blockly.Msg.CONTROLS_FLOW_STATEMENTS_OPERATOR_BREAK, 'BREAK'],
          [Blockly.Msg.CONTROLS_FLOW_STATEMENTS_OPERATOR_CONTINUE, 'CONTINUE']];
     this.setHelpUrl(Blockly.Msg.CONTROLS_FLOW_STATEMENTS_HELPURL);
-    this.setColour(Blockly.Blocks.loops.HUE);
+    this.setColour(Blockly.Blocks.loops.HUE,Blockly.Blocks.loops.Saturation,Blockly.Blocks.loops.Value);
     this.appendDummyInput()
         .appendField(new Blockly.FieldDropdown(OPERATORS), 'FLOW');
     this.setPreviousStatement(true);

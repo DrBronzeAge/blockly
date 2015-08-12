@@ -30,9 +30,12 @@ goog.require('Blockly.Blocks');
 
 
 /**
- * Common HSV hue for all blocks in this category.
+ * Common HSV hue, saturation and value for all blocks in this category.
+ * this is ~ #F37C8D, the lighter pink from the brand guide
  */
-Blockly.Blocks.math.HUE = 230;
+Blockly.Blocks.math.HUE = 351;
+Blockly.Blocks.math.Saturation=0.49;
+Blockly.Blocks.math.Value=0.953;
 
 Blockly.Blocks['math_number'] = {
   /**
@@ -41,7 +44,7 @@ Blockly.Blocks['math_number'] = {
    */
   init: function() {
     this.setHelpUrl(Blockly.Msg.MATH_NUMBER_HELPURL);
-    this.setColour(Blockly.Blocks.math.HUE);
+    this.setColour(Blockly.Blocks.math.HUE, Blockly.Blocks.math.Saturation,Blockly.Blocks.math.Value);
     this.appendDummyInput()
         .appendField(new Blockly.FieldTextInput('0',
         Blockly.FieldTextInput.numberValidator), 'NUM');
@@ -63,7 +66,7 @@ Blockly.Blocks['math_arithmetic'] = {
          [Blockly.Msg.MATH_DIVISION_SYMBOL, 'DIVIDE'],
          [Blockly.Msg.MATH_POWER_SYMBOL, 'POWER']];
     this.setHelpUrl(Blockly.Msg.MATH_ARITHMETIC_HELPURL);
-    this.setColour(Blockly.Blocks.math.HUE);
+    this.setColour(Blockly.Blocks.math.HUE,Blockly.Blocks.math.Saturation,Blockly.Blocks.math.Value);
     this.setOutput(true, 'Number');
     this.appendValueInput('A')
         .setCheck('Number');
@@ -463,32 +466,58 @@ Blockly.Blocks['math_constrain'] = {
   }
 };
 
+// Blockly.Blocks['math_random_int'] = {
+//   /**
+//    * Block for random integer between [X] and [Y].
+//    * @this Blockly.Block
+//    */
+//   init: function() {
+//     this.appendDummyInput()
+//       .appendField(new Blockly.FieldImage("../../images/random.png",30,30,"*"));
+//     this.setColour(Blockly.Blocks.math.HUE, Blockly.Blocks.math.Saturation,Blockly.Blocks.math.Value);
+//     this.jsonInit({
+//       "message0": Blockly.Msg.MATH_RANDOM_INT_TITLE,
+//       "args0": [
+//         {
+//           "type": "input_value",
+//           "name": "FROM",
+//           "check": "Number"
+//         },
+//         {
+//           "type": "input_value",
+//           "name": "TO",
+//           "check": "Number"
+//         }
+//       ],
+//       "inputsInline": true,
+//       "output": "Number",
+//       "colour": this.setColour(Blockly.Blocks.math.HUE, Blockly.Blocks.math.Saturation,Blockly.Blocks.math.Value),
+//       "tooltip": Blockly.Msg.MATH_RANDOM_INT_TOOLTIP,
+//       "helpUrl": Blockly.Msg.MATH_RANDOM_INT_HELPURL
+//     });
+//   }
+// };
+
 Blockly.Blocks['math_random_int'] = {
   /**
    * Block for random integer between [X] and [Y].
    * @this Blockly.Block
+   * took this out of the old version, rather than figure out how to deal with the new
+   * JSON init style of block.
    */
   init: function() {
-    this.jsonInit({
-      "message0": Blockly.Msg.MATH_RANDOM_INT_TITLE,
-      "args0": [
-        {
-          "type": "input_value",
-          "name": "FROM",
-          "check": "Number"
-        },
-        {
-          "type": "input_value",
-          "name": "TO",
-          "check": "Number"
-        }
-      ],
-      "inputsInline": true,
-      "output": "Number",
-      "colour": Blockly.Blocks.math.HUE,
-      "tooltip": Blockly.Msg.MATH_RANDOM_INT_TOOLTIP,
-      "helpUrl": Blockly.Msg.MATH_RANDOM_INT_HELPURL
-    });
+    this.setHelpUrl(Blockly.Msg.MATH_RANDOM_INT_HELPURL);
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldImage("../../images/random.png",30,30,"*"));
+    this.setColour(Blockly.Blocks.math.HUE, Blockly.Blocks.math.Saturation,Blockly.Blocks.math.Value);
+    console.log('RND colour got called, it reads '+ this.getColour());
+    this.setOutput(true, 'Number');
+    this.interpolateMsg(Blockly.Msg.MATH_RANDOM_INT_TITLE,
+                        ['FROM', 'Number', Blockly.ALIGN_RIGHT],
+                        ['TO', 'Number', Blockly.ALIGN_RIGHT],
+                        Blockly.ALIGN_RIGHT);
+    this.setInputsInline(true);
+    this.setTooltip(Blockly.Msg.MATH_RANDOM_INT_TOOLTIP);
   }
 };
 
