@@ -35,7 +35,7 @@ goog.require('Blockly.Blocks');
  */
 Blockly.Blocks.colour.HUE = 210;
 
-Blockly.Blocks.colour.saturation=0.023;
+Blockly.Blocks.colour.Saturation=0.023;
 
 Blockly.Blocks.colour.Value=0.694;
 
@@ -46,7 +46,7 @@ Blockly.Blocks['colour_picker'] = {
    */
   init: function() {
     this.setHelpUrl(Blockly.Msg.COLOUR_PICKER_HELPURL);
-    this.setColour(Blockly.Blocks.colour.HUE, Blockly.Blocks,colour.Saturation, Blockly.Blocks.colour.Value);
+    this.setColour(Blockly.Blocks.colour.HUE, Blockly.Blocks.colour.Saturation, Blockly.Blocks.colour.Value);
     this.appendDummyInput()
         .appendField(new Blockly.FieldColour('#ff0000'), 'COLOUR');
     this.setOutput(true, 'Colour');
