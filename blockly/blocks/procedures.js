@@ -30,9 +30,14 @@ goog.require('Blockly.Blocks');
 
 
 /**
- * Common HSV hue for all blocks in this category.
+ * Common HSV hue, value and saturation for all blocks in this category.
+ * set to ~ #873299 ('Purple')
  */
 Blockly.Blocks.procedures.HUE = 290;
+
+Blockly.Blocks.procedures.Saturation= 0.673;
+
+Blockly.Blocks.procedures.Value= 0.60;
 
 Blockly.Blocks['procedures_defnoreturn'] = {
   /**
@@ -41,7 +46,9 @@ Blockly.Blocks['procedures_defnoreturn'] = {
    */
   init: function() {
     this.setHelpUrl(Blockly.Msg.PROCEDURES_DEFNORETURN_HELPURL);
-    this.setColour(Blockly.Blocks.procedures.HUE);
+    this.setColour(Blockly.Blocks.procedures.HUE, Blockly.Blocks.procedures.Saturation, Blockly.Blocks.procedures.Value);
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldImage("../../images/process.jpg",120,120,"*"));
     var name = Blockly.Procedures.findLegalName(
         Blockly.Msg.PROCEDURES_DEFNORETURN_PROCEDURE, this);
     var nameField = new Blockly.FieldTextInput(name,
@@ -336,7 +343,9 @@ Blockly.Blocks['procedures_defreturn'] = {
    */
   init: function() {
     this.setHelpUrl(Blockly.Msg.PROCEDURES_DEFRETURN_HELPURL);
-    this.setColour(Blockly.Blocks.procedures.HUE);
+    this.setColour(Blockly.Blocks.procedures.HUE, Blockly.Blocks.procedures.Saturation, Blockly.Blocks.procedures.Value);
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldImage("../../images/proc_w_output.jpg",120,120,"*"));
     var name = Blockly.Procedures.findLegalName(
         Blockly.Msg.PROCEDURES_DEFRETURN_PROCEDURE, this);
     var nameField = new Blockly.FieldTextInput(name,
@@ -385,7 +394,7 @@ Blockly.Blocks['procedures_mutatorcontainer'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.setColour(Blockly.Blocks.procedures.HUE);
+    this.setColour(Blockly.Blocks.procedures.HUE, Blockly.Blocks.procedures.Saturation, Blockly.Blocks.procedures.Value);
     this.appendDummyInput()
         .appendField(Blockly.Msg.PROCEDURES_MUTATORCONTAINER_TITLE);
     this.appendStatementInput('STACK');
@@ -403,7 +412,7 @@ Blockly.Blocks['procedures_mutatorarg'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.setColour(Blockly.Blocks.procedures.HUE);
+    this.setColour(Blockly.Blocks.procedures.HUE, Blockly.Blocks.procedures.Saturation, Blockly.Blocks.procedures.Value);
     this.appendDummyInput()
         .appendField(Blockly.Msg.PROCEDURES_MUTATORARG_TITLE)
         .appendField(new Blockly.FieldTextInput('x', this.validator_), 'NAME');
@@ -434,7 +443,9 @@ Blockly.Blocks['procedures_callnoreturn'] = {
    */
   init: function() {
     this.setHelpUrl(Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL);
-    this.setColour(Blockly.Blocks.procedures.HUE);
+    this.setColour(Blockly.Blocks.procedures.HUE, Blockly.Blocks.procedures.Saturation, Blockly.Blocks.procedures.Value);
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldImage("../../images/func_return.jpg",120,120,"*"));
     this.appendDummyInput('TOPROW')
         .appendField(Blockly.Msg.PROCEDURES_CALLNORETURN_CALL)
         .appendField('', 'NAME');
@@ -663,7 +674,9 @@ Blockly.Blocks['procedures_callreturn'] = {
    */
   init: function() {
     this.setHelpUrl(Blockly.Msg.PROCEDURES_CALLRETURN_HELPURL);
-    this.setColour(Blockly.Blocks.procedures.HUE);
+    this.setColour(Blockly.Blocks.procedures.HUE, Blockly.Blocks.procedures.Saturation, Blockly.Blocks.procedures.Value);
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldImage("../../images/func_return.jpg",120,120,"*"));
     this.appendDummyInput('TOPROW')
         .appendField(Blockly.Msg.PROCEDURES_CALLRETURN_CALL)
         .appendField('', 'NAME');
@@ -691,7 +704,9 @@ Blockly.Blocks['procedures_ifreturn'] = {
    */
   init: function() {
     this.setHelpUrl('http://c2.com/cgi/wiki?GuardClause');
-    this.setColour(Blockly.Blocks.procedures.HUE);
+    this.setColour(Blockly.Blocks.procedures.HUE, Blockly.Blocks.procedures.Saturation, Blockly.Blocks.procedures.Value);
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldImage("../../images/process.jpg",120,120,"*"));
     this.appendValueInput('CONDITION')
         .setCheck('Boolean')
         .appendField(Blockly.Msg.CONTROLS_IF_MSG_IF);

@@ -30,9 +30,15 @@ goog.require('Blockly.Blocks');
 
 
 /**
- * Common HSV hue for all blocks in this category.
+ * Common HSV hue, saturation and value for all blocks in this category.
+ * ~ #E81A4B ('red')
  */
-Blockly.Blocks.variables.HUE = 330;
+Blockly.Blocks.variables.HUE = 346;
+
+Blockly.Blocks.variables.Saturation=0.888;
+
+Blockly.Blocks.variables.Value=0.91;
+
 
 Blockly.Blocks['variables_get'] = {
   /**
@@ -41,7 +47,7 @@ Blockly.Blocks['variables_get'] = {
    */
   init: function() {
     this.setHelpUrl(Blockly.Msg.VARIABLES_GET_HELPURL);
-    this.setColour(Blockly.Blocks.variables.HUE);
+    this.setColour(Blockly.Blocks.variables.HUE,Blockly.Blocks.variables.Saturation, Blockly.Blocks.variables.Value);
     this.appendDummyInput()
         .appendField(new Blockly.FieldVariable(
         Blockly.Msg.VARIABLES_DEFAULT_NAME), 'VAR');
@@ -109,12 +115,16 @@ Blockly.Blocks['variables_set'] = {
       ],
       "previousStatement": null,
       "nextStatement": null,
-      "colour": Blockly.Blocks.variables.HUE,
+      "colourHue": Blockly.Blocks.variables.HUE,
+      "colourSaturation":Blockly.Blocks.variables.Saturation,
+      "colourValue":Blockly.Blocks.variables.Value,
       "tooltip": Blockly.Msg.VARIABLES_SET_TOOLTIP,
       "helpUrl": Blockly.Msg.VARIABLES_SET_HELPURL
     });
     this.contextMenuMsg_ = Blockly.Msg.VARIABLES_SET_CREATE_GET;
-  },
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldImage("../../images/setvariable.jpg",120,120,"*")); 
+    },
   /**
    * Return all variables referenced by this block.
    * @return {!Array.<string>} List of variable names.

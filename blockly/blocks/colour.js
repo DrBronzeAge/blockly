@@ -30,9 +30,14 @@ goog.require('Blockly.Blocks');
 
 
 /**
- * Common HSV hue for all blocks in this category.
+ * Common HSV hue, saturation and value for all blocks in this category.
+ * set to ~ ADAFB1 in brand guide
  */
-Blockly.Blocks.colour.HUE = 20;
+Blockly.Blocks.colour.HUE = 210;
+
+Blockly.Blocks.colour.saturation=0.023;
+
+Blockly.Blocks.colour.Value=0.694;
 
 Blockly.Blocks['colour_picker'] = {
   /**
@@ -41,7 +46,7 @@ Blockly.Blocks['colour_picker'] = {
    */
   init: function() {
     this.setHelpUrl(Blockly.Msg.COLOUR_PICKER_HELPURL);
-    this.setColour(Blockly.Blocks.colour.HUE);
+    this.setColour(Blockly.Blocks.colour.HUE, Blockly.Blocks,colour.Saturation, Blockly.Blocks.colour.Value);
     this.appendDummyInput()
         .appendField(new Blockly.FieldColour('#ff0000'), 'COLOUR');
     this.setOutput(true, 'Colour');
