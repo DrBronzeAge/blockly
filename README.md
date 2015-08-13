@@ -6,4 +6,5 @@ My Changes:
 enable live editing of /core and /blocks files
 
 *freed up whole colour spectrum by making saturation and value local variables, like hue was
-Recast the blocks I want to use in Linkitz branded colours
+
+*Recast the blocks I want to use in Linkitz branded colours
