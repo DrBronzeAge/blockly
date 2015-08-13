@@ -914,13 +914,21 @@ Blockly.Block.prototype.appendDummyInput = function(opt_name) {
  * @param {!Object} json Structured data describing the block.
  */
 Blockly.Block.prototype.jsonInit = function(json) {
+  //console.log('jsonInit was called');
   // Validate inputs.
   goog.asserts.assert(json['output'] == undefined ||
       json['previousStatement'] == undefined,
       'Must not have both an output and a previousStatement.');
 
   // Set basic properties of block.
-  this.setColour(json['colour']);
+  var hue=json['colourHue'];
+  //console.log(hue);
+  var saturation=json['colourSaturation'];
+  //console.log(saturation);
+  var value=json['colourValue'];
+  //var colourElements=[hue,saturation,value];
+  //console.log(colourElements);
+  this.setColour(hue,saturation,value);
 
   // Interpolate the message blocks.
   var i = 0;

@@ -147,7 +147,7 @@
           </block>
         </value>
       </block> -->
-      <!-- <block type="math_random_int">
+      <block type="math_random_int">
         <value name="FROM">
           <block type="math_number">
             <field name="NUM">1</field>
@@ -158,7 +158,7 @@
             <field name="NUM">100</field>
           </block>
         </value>
-      </block> -->
+      </block>
       <!-- <block type="math_random_float"></block> --> -->
     </category>
     <category id="catText">
@@ -211,29 +211,29 @@
           </block>
         </value>
       </block> -->
-      <block type="lists_length"></block>
+      <block type="lists_length"></block> 
   <!--     <block type="lists_isEmpty"></block> -->
-      <block type="lists_indexOf">
+      <!-- <block type="lists_indexOf">
         <value name="VALUE">
           <block type="variables_get">
             <field name="VAR" class="listVar">...</field>
           </block>
         </value>
-      </block>
-      <block type="lists_getIndex">
+      </block> -->
+      <!-- <block type="lists_getIndex">
         <value name="VALUE">
           <block type="variables_get">
             <field name="VAR" class="listVar">...</field>
           </block>
         </value>
-      </block>
-      <block type="lists_setIndex">
+      </block> -->
+     <!--  <block type="lists_setIndex">
         <value name="LIST">
           <block type="variables_get">
             <field name="VAR" class="listVar">...</field>
           </block>
         </value>
-      </block>
+      </block> -->
       <!-- <block type="lists_getSublist">
         <value name="LIST">
           <block type="variables_get">
@@ -249,9 +249,9 @@
         </value>
       </block> -->
     </category>
-    <category id="catColour">  <!-- Think I'll leave all the colours for now. -->
+    <category id="catColour">  <!-- Only kept the colour picker for now. I figure we only want one, but there might be better choices -->
       <block type="colour_picker"></block>
-      <block type="colour_random"></block>
+      <!-- <block type="colour_random"></block>
       <block type="colour_rgb">
         <value name="RED">
           <block type="math_number">
@@ -286,7 +286,7 @@
           </block>
         </value>
       </block>
-    </category>
+    </category> -->
     <sep></sep>
     <category id="catVariables" custom="VARIABLE"></category>
     <category id="catFunctions" custom="PROCEDURE"></category>

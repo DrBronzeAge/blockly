@@ -21,6 +21,7 @@
 /**
  * @fileoverview List blocks for Blockly.
  * @author fraser@google.com (Neil Fraser)
+ * I have broken get index and set index in ways I don't understand.
  */
 'use strict';
 
@@ -30,9 +31,17 @@ goog.require('Blockly.Blocks');
 
 
 /**
- * Common HSV hue for all blocks in this category.
+ * Common HSV hue, saturation and value for all blocks in this category.
+ * this is ~ #0083ca, the blue in our toy colours
+ * images are just a place-holder, for the moment.
  */
-Blockly.Blocks.lists.HUE = 260;
+Blockly.Blocks.lists.HUE = 201;
+Blockly.Blocks.lists.Saturation = 0.999;
+Blockly.Blocks.lists.Value = 0.792;
+
+//hack for getting around the json init problem
+
+var colourElements=[Blockly.Blocks.lists.Hue,Blockly.Blocks.lists.Saturation,Blockly.Blocks.lists.Value];
 
 Blockly.Blocks['lists_create_empty'] = {
   /**
@@ -41,7 +50,9 @@ Blockly.Blocks['lists_create_empty'] = {
    */
   init: function() {
     this.setHelpUrl(Blockly.Msg.LISTS_CREATE_EMPTY_HELPURL);
-    this.setColour(Blockly.Blocks.lists.HUE);
+    this.setColour(Blockly.Blocks.lists.HUE,Blockly.Blocks.lists.Saturation,Blockly.Blocks.lists.Value);
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldImage("../../images/lists_generic.png",120,120,"*"));
     this.setOutput(true, 'Array');
     this.appendDummyInput()
         .appendField(Blockly.Msg.LISTS_CREATE_EMPTY_TITLE);
@@ -56,7 +67,9 @@ Blockly.Blocks['lists_create_with'] = {
    */
   init: function() {
     this.setHelpUrl(Blockly.Msg.LISTS_CREATE_WITH_HELPURL);
-    this.setColour(Blockly.Blocks.lists.HUE);
+    this.setColour(Blockly.Blocks.lists.HUE,Blockly.Blocks.lists.Saturation,Blockly.Blocks.lists.Value);
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldImage("../../images/lists_generic.png",120,120,"*"));
     this.itemCount_ = 3;
     this.updateShape_();
     this.setOutput(true, 'Array');
@@ -237,6 +250,9 @@ Blockly.Blocks['lists_length'] = {
    * @this Blockly.Block
    */
   init: function() {
+    this.setColour(Blockly.Blocks.lists.HUE,Blockly.Blocks.lists.Saturation,Blockly.Blocks.lists.Value);
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldImage("../../images/lists_generic.png",120,120,"*"));
     this.jsonInit({
       "message0": Blockly.Msg.LISTS_LENGTH_TITLE,
       "args0": [
@@ -247,7 +263,9 @@ Blockly.Blocks['lists_length'] = {
         }
       ],
       "output": 'Number',
-      "colour": Blockly.Blocks.lists.HUE,
+      "colourHue": Blockly.Blocks.lists.HUE,
+      "colourSaturation": Blockly.Blocks.lists.Saturation,
+      "colourValue": Blockly.Blocks.lists.Value,
       "tooltip": Blockly.Msg.LISTS_LENGTH_TOOLTIP,
       "helpUrl": Blockly.Msg.LISTS_LENGTH_HELPURL
     });
@@ -316,7 +334,9 @@ Blockly.Blocks['lists_getIndex'] = {
          [Blockly.Msg.LISTS_GET_INDEX_LAST, 'LAST'],
          [Blockly.Msg.LISTS_GET_INDEX_RANDOM, 'RANDOM']];
     this.setHelpUrl(Blockly.Msg.LISTS_GET_INDEX_HELPURL);
-    this.setColour(Blockly.Blocks.lists.HUE);
+    this.setColour(Blockly.Blocks.lists.HUE,Blockly.Blocks.lists.Saturation,Blockly.Blocks.lists.Value);
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldImage("../../images/lists_generic.png",120,120,"*"));
     var modeMenu = new Blockly.FieldDropdown(MODE, function(value) {
       var isStatement = (value == 'REMOVE');
       this.sourceBlock_.updateStatement_(isStatement);
@@ -447,7 +467,9 @@ Blockly.Blocks['lists_setIndex'] = {
          [Blockly.Msg.LISTS_GET_INDEX_LAST, 'LAST'],
          [Blockly.Msg.LISTS_GET_INDEX_RANDOM, 'RANDOM']];
     this.setHelpUrl(Blockly.Msg.LISTS_SET_INDEX_HELPURL);
-    this.setColour(Blockly.Blocks.lists.HUE);
+    this.setColour(Blockly.Blocks.lists.HUE,Blockly.Blocks.lists.Saturation,Blockly.Blocks.lists.Value);
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldImage("../../images/lists_generic.png",120,120,"*"));
     this.appendValueInput('LIST')
         .setCheck('Array')
         .appendField(Blockly.Msg.LISTS_SET_INDEX_INPUT_IN_LIST);

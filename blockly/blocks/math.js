@@ -466,60 +466,40 @@ Blockly.Blocks['math_constrain'] = {
   }
 };
 
-// Blockly.Blocks['math_random_int'] = {
-//   /**
-//    * Block for random integer between [X] and [Y].
-//    * @this Blockly.Block
-//    */
-//   init: function() {
-//     this.appendDummyInput()
-//       .appendField(new Blockly.FieldImage("../../images/random.png",30,30,"*"));
-//     this.setColour(Blockly.Blocks.math.HUE, Blockly.Blocks.math.Saturation,Blockly.Blocks.math.Value);
-//     this.jsonInit({
-//       "message0": Blockly.Msg.MATH_RANDOM_INT_TITLE,
-//       "args0": [
-//         {
-//           "type": "input_value",
-//           "name": "FROM",
-//           "check": "Number"
-//         },
-//         {
-//           "type": "input_value",
-//           "name": "TO",
-//           "check": "Number"
-//         }
-//       ],
-//       "inputsInline": true,
-//       "output": "Number",
-//       "colour": this.setColour(Blockly.Blocks.math.HUE, Blockly.Blocks.math.Saturation,Blockly.Blocks.math.Value),
-//       "tooltip": Blockly.Msg.MATH_RANDOM_INT_TOOLTIP,
-//       "helpUrl": Blockly.Msg.MATH_RANDOM_INT_HELPURL
-//     });
-//   }
-// };
-
 Blockly.Blocks['math_random_int'] = {
   /**
    * Block for random integer between [X] and [Y].
    * @this Blockly.Block
-   * took this out of the old version, rather than figure out how to deal with the new
-   * JSON init style of block.
    */
   init: function() {
-    this.setHelpUrl(Blockly.Msg.MATH_RANDOM_INT_HELPURL);
     this.appendDummyInput()
       .appendField(new Blockly.FieldImage("../../images/random.png",30,30,"*"));
     this.setColour(Blockly.Blocks.math.HUE, Blockly.Blocks.math.Saturation,Blockly.Blocks.math.Value);
-    console.log('RND colour got called, it reads '+ this.getColour());
-    this.setOutput(true, 'Number');
-    this.interpolateMsg(Blockly.Msg.MATH_RANDOM_INT_TITLE,
-                        ['FROM', 'Number', Blockly.ALIGN_RIGHT],
-                        ['TO', 'Number', Blockly.ALIGN_RIGHT],
-                        Blockly.ALIGN_RIGHT);
-    this.setInputsInline(true);
-    this.setTooltip(Blockly.Msg.MATH_RANDOM_INT_TOOLTIP);
+    this.jsonInit({
+      "message0": Blockly.Msg.MATH_RANDOM_INT_TITLE,
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "FROM",
+          "check": "Number"
+        },
+        {
+          "type": "input_value",
+          "name": "TO",
+          "check": "Number"
+        }
+      ],
+      "inputsInline": true,
+      "output": "Number",
+      "colourHue": Blockly.Blocks.math.HUE, 
+      "colourSaturation":Blockly.Blocks.math.Saturation,
+      "colourValue":Blockly.Blocks.math.Value,
+      "tooltip": Blockly.Msg.MATH_RANDOM_INT_TOOLTIP,
+      "helpUrl": Blockly.Msg.MATH_RANDOM_INT_HELPURL
+    });
   }
 };
+
 
 Blockly.Blocks['math_random_float'] = {
   /**
