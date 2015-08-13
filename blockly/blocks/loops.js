@@ -106,7 +106,7 @@ Blockly.Blocks['controls_whileUntil'] = {
          [Blockly.Msg.CONTROLS_WHILEUNTIL_OPERATOR_UNTIL, 'UNTIL']];
     this.setHelpUrl(Blockly.Msg.CONTROLS_WHILEUNTIL_HELPURL);
     this.appendDummyInput()
-      .appendField(new Blockly.FieldImage("../../images/loop.jpg",120,120,"*"))
+      .appendField(new Blockly.FieldImage("../../images/loop.jpg",120,120,"*"));
     this.setColour(Blockly.Blocks.loops.HUE,Blockly.Blocks.loops.Saturation,Blockly.Blocks.loops.Value);
     this.appendValueInput('BOOL')
         .setCheck('Boolean')
