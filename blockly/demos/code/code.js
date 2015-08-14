@@ -468,8 +468,11 @@ Code.initLanguage = function() {
   document.getElementById('linkButton').title = MSG['linkTooltip'];
   document.getElementById('runButton').title = MSG['runTooltip'];
   document.getElementById('trashButton').title = MSG['trashTooltip'];
+//in the new version, the categories you want to use in the toolbox must be added to this list.
+//You then need to add a corresponding key-value pair to demos/code/msg/en (and whatever other language you want to use)
 
-  var categories = ['catLogic', 'catLoops', 'catMath', 'catText', 'catLists',
+
+  var categories = ['LinkitzApi','Motion','Speaker','Mic','LED','Friend','Hub','catLogic', 'catLoops', 'catMath', 'catText', 'catLists',
                     'catColour', 'catVariables', 'catFunctions'];
   for (var i = 0, cat; cat = categories[i]; i++) {
     document.getElementById(cat).setAttribute('name', MSG[cat]);

@@ -2,6 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <!--this is the prototype index for Rebus. It has been altered to use the uncompressed version of blockly
+  to speed up iteration and experimentation. When using it, please comment out any unwanted lines or features rather than completely erasing them.
+  Some elements that will never see the light of day are still included here just because it is faster to comment them out and then uncomment than to 
+  do the legwork of putting things in piecemeal.-->
   <meta name="google" value="notranslate">
   <title>Blockly Demo:</title>
   <link rel="stylesheet" href="style.css">
@@ -23,6 +27,7 @@
   <script src="../../php_compressed.js"></script>
   <script src="../../dart_compressed.js"></script>
   <script src="code.js"></script>
+  <script src="linkitzBlocks.js"></script>
 </head>
 <body>
   <table width="100%" height="100%">
@@ -80,6 +85,39 @@
   <textarea id="content_xml" class="content" wrap="off"></textarea>
 
   <xml id="toolbox" style="display: none">
+  <category id="LinkitzApi">
+    <category id="Motion">
+      <block type="getmotiondata"></block>
+      <block type="onmotiontrigger"></block>
+    </category>
+    <category id="Speaker">
+      <block type="getspeakerdata"></block>
+      <block type="speakerpetal"></block>
+
+    </category>
+    <category id="Mic">
+      <block type="getmicdata"></block>
+      <block type="mic_event"></block>
+      <block type="read_sound_levels"></block>
+    </category>
+    <category id="LED">
+      <block type="getleddata"></block>
+      <block type="ledoutput"></block>
+    </category>
+    <category id="Friend">
+      <block type="getfrienddata"></block>
+      <block type="onreceive"></block>
+      <block type="transmit"></block>
+    </category>
+    <category id='Hub'>
+      <block type="check_type"></block>
+      <block type="roster_event"></block>
+      <block type="roster_list"></block>
+      <block type="roster_event_two"></block>
+      <block type="connection_event"></block>
+    </category>
+    <sep></sep> <!-- adds a space.  I wonder if I could enclose an image or a div or something in there?-->
+  </category>
     <category id="catLogic"> 
       <block type="controls_if"></block>  <!--  Definitely need this one -->
       <block type="logic_compare"></block>
@@ -286,11 +324,11 @@
           </block>
         </value>
       </block>
-    </category> -->
-    <sep></sep>  <!-- this hides variables and functions in the main toolbox-- removed for now
-    check that.  I have no idea what these things do.-->
-    <category id="catVariables" custom="VARIABLE"></category>
-    <category id="catFunctions" custom="PROCEDURE"></category>
+      -->
+    </category> 
+    <sep></sep>  
+  <category id="catVariables" custom="VARIABLE"></category>
+  <category id="catFunctions" custom="PROCEDURE"></category>
   </xml>
 
 </body>
