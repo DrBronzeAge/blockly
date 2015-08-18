@@ -93,6 +93,29 @@
     <category id="Speaker">
       <block type="getspeakerdata"></block>
       <block type="speakerpetal"></block>
+      <block type="sound_from_file"></block>
+      <block type="sound_fdv">
+        <value name="Frequency">
+          <block type="math_number">
+            <field name="NUM">800</field>
+          </block>
+        </value>
+        <value name="Duration">
+          <block type="math_number">
+            <field name="NUM">500</field>
+          </block>
+        </value>
+        <value name="Volume">
+          <block type="math_number">
+            <field name="NUM">50</field>
+          </block>
+        </value>
+      </block>
+      <block type="speaker_play_sound"></block>
+      <block type="sound_from_file"></block>
+      <block type="sound_from_mic"></block>
+      <block type="sound_user_defined_from_mic"></block>
+      <block type="sound_convert_pitch_to_hue"></block>
 
     </category>
     <category id="Mic">

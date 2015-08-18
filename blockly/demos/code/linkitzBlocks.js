@@ -443,3 +443,294 @@ Blockly.JavaScript['read_sound_levels'] = function(block) {
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
+
+
+
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//Lyssa's sound and radio blocks
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+// radio event
+// https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#evprcb
+
+Blockly.Blocks['radio_event'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("On Radio Event");
+    this.appendDummyInput()
+    .appendField(new Blockly.FieldImage("../../images/Petal_Top_Friend_Preview.jpg", 64, 64, "GetMicData"));
+    this.setColour(LinkitzHue,LinkitzSaturation,LinkitzValue);
+    this.appendValueInput("NAME")
+        .appendField(new Blockly.FieldDropdown([["Msg_Color", "MSG_COLOR"], ["Msg_Sound", "MSG_SOUND"], ["Msg_Blank", "MSG_BLANK"]]), "NAME");
+    this.setNextStatement(true);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// motion event
+// link: 
+Blockly.Blocks['on_motion_trigger'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("On Motion Trigger");
+    this.appendStatementInput("NAME");
+    this.setNextStatement(true);
+    this.appendDummyInput()
+    .appendField(new Blockly.FieldImage("../../images/Petal_Top_Mic_Preview.jpg", 64, 64, "GetMicData"));
+    this.setColour(LinkitzHue,LinkitzSaturation,LinkitzValue);
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// Call for speaker to play a sound file
+// link: https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#g7vr8s
+
+Blockly.Blocks['speaker_play_sound'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Play sound");
+    this.appendValueInput("NAME")
+        .setCheck("Valid_sound_block");
+    this.setInputsInline(false);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldImage("../../images/Petal_Top_Speaker_Preview.jpg", 64, 64, "GetMicData"));
+    this.setColour(LinkitzHue,LinkitzSaturation,LinkitzValue);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// Create your own sound. Could be combined or put in a loop to make more complex sounds
+// link: https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#jg6c8w
+
+Blockly.Blocks['sound_fdv'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Sound with");
+    this.appendValueInput("Frequency")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Frequency");
+    this.appendValueInput("Duration")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Duration");
+    this.appendValueInput("Volume")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Volume");
+    this.setOutput(true);
+    this.appendDummyInput()
+      .appendField(new Blockly.FieldImage("../../images/Petal_Top_Speaker_Preview.jpg", 64, 64, "GetMicData"));
+    this.setColour(LinkitzHue,LinkitzSaturation,LinkitzValue);    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// Use a pre-defined sound
+// link: https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#q8uiy9
+
+Blockly.Blocks['sound_from_file'] = {
+  init: function() {
+    this.appendValueInput("NAME")
+        .appendField(new Blockly.FieldDropdown([["beep", "BEEP"], ["whoohoo", "WOOHOO"], ["uhoh", "UHOH"], ["hi", "HI"]]), "NAME");
+    this.setOutput(true);
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldImage("../../images/Petal_Top_Speaker_Preview.jpg", 64, 64, "GetMicData"));
+    this.setColour(LinkitzHue,LinkitzSaturation,LinkitzValue);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// Use sound in from mic, out through speaker (requires and intermediate cache of sound_in to a file)
+// Link: https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#2ixsvm
+
+Blockly.Blocks['sound_from_mic'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Sound from microphone");
+    this.appendValueInput("Volume")
+        .setCheck("Number")
+        .appendField("Volume");
+    this.appendDummyInput()
+        .appendField("With filter");
+    this.appendValueInput("NAME")
+        .appendField(new Blockly.FieldDropdown([["None", "FILTER_NONE"], ["Like_a_duck", "FILTER_ADD_NOISE"], ["Squeaky", "FILTER_HIGH_SHIFT"], ["Scary", "FILTER_LOW_SHIFT"]]), "FILTER_OPTIONS");
+    this.setInputsInline(false);
+    this.setOutput(true);
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldImage("../../images/Petal_Top_Mic_Preview.jpg", 64, 64, "GetMicData"));
+    this.setColour(LinkitzHue,LinkitzSaturation,LinkitzValue);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// Play a user defined sound that a user records from the mic. It gets saved in a file. requires filename.
+// this example shows three options. not sure if we want more.
+// link: https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#z4xtfp
+
+
+Blockly.Blocks['sound_user_defined_from_mic'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("My_sound");
+    this.appendValueInput("Sound__userdefined_filename")
+        .setCheck("Array")
+        .appendField(new Blockly.FieldDropdown([["myfile1", "USER_DEFINED_SOUND1"], ["myfile2", "USER_DEFINED_SOUND2"], ["myfile3", "USER_DEFINED_SOUND3"]]), "My sound files");
+    this.appendValueInput("Volume")
+        .setCheck("Number")
+        .appendField("Volume");
+    this.setInputsInline(false);
+    this.setOutput(true);
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldImage("../../images/Petal_Top_Mic_Preview.jpg", 64, 64, "GetMicData"));
+    this.setColour(LinkitzHue,LinkitzSaturation,LinkitzValue);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// on microphone trigger
+// link: https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#sogot8
+Blockly.Blocks['on_microphone_trigger'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("On Microphone Trigger");
+    this.appendStatementInput("NAME");
+    this.setInputsInline(false);
+    this.setNextStatement(true);
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldImage("../../images/Petal_Top_Mic_Preview.jpg", 64, 64, "GetMicData"));
+    this.setColour(LinkitzHue,LinkitzSaturation,LinkitzValue);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+// On microphone trigger, user may convert sound (PITCH) to color (HUE) with POWER (brightness)=VOLUME.
+// 20150727 LN: I envision that incoming sound is stored in a LIFO buffer.
+// 20150727 LN: I'm unclear on the role of bandwidth in this caluclation (as a user visible paramenter)
+// link: https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#mf254a
+
+Blockly.Blocks['sound_convert_pitch_to_hue'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Sound_to_Colored_Light");
+    this.appendValueInput("Pitch")
+        .setCheck("Number")
+        .appendField("Pitch");
+    this.appendValueInput("Bandwidth")
+        .setCheck("Number")
+        .appendField("Bandwidth ???");
+    this.appendValueInput("Volume")
+        .setCheck("Number")
+        .appendField("Volume");
+    this.appendValueInput("Audio_buffer")
+        .setCheck("Valid_sound_block")
+        .appendField("Filename");
+    this.setInputsInline(false);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldImage("../../images/Petal_Top_Mic_Preview.jpg", 64, 64, "GetMicData"));
+    this.setColour(LinkitzHue,LinkitzSaturation,LinkitzValue);;
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+//---------------------------------------------------
+
+Blockly.JavaScript['math_foo'] = function(block) {
+  var value_sound_file_name = Blockly.JavaScript.valueToCode(block, 'sound_file_name', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_volume = Blockly.JavaScript.valueToCode(block, 'volume', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...';
+  return code;
+};
+
+BBlockly.JavaScript['radio_event'] = function(block) {
+  var dropdown_name = block.getFieldValue('NAME');
+  var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...';
+  return code;
+};
+
+Blockly.JavaScript['speaker_play_sound'] = function(block) {
+  var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
+  
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...';
+  return code;
+};
+
+BBlockly.JavaScript['sound_fdv'] = function(block) {
+  var value_frequency = Blockly.JavaScript.valueToCode(block, 'Frequency', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_duration = Blockly.JavaScript.valueToCode(block, 'Duration', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_volume = Blockly.JavaScript.valueToCode(block, 'Volume', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+Blockly.JavaScript['sound_from_file'] = function(block) {
+  var dropdown_name = block.getFieldValue('NAME');
+  var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+Blockly.JavaScript['sound_from_mic'] = function(block) {
+  var value_volume = Blockly.JavaScript.valueToCode(block, 'Volume', Blockly.JavaScript.ORDER_ATOMIC);
+  var dropdown_filter_options = block.getFieldValue('FILTER_OPTIONS');
+  var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+Blockly.JavaScript['sound_user_defined_from_mic'] = function(block) {
+  var dropdown_my_sound_files = block.getFieldValue('My sound files');
+  var value_sound__userdefined_filename = Blockly.JavaScript.valueToCode(block, 'Sound__userdefined_filename', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_volume = Blockly.JavaScript.valueToCode(block, 'Volume', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+
+
+Blockly.JavaScript['on_microphone_trigger'] = function(block) {
+  var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...';
+  return code;
+};
+
+Blockly.JavaScript['sound_convert_pitch_to_hue'] = function(block) {
+  var value_pitch = Blockly.JavaScript.valueToCode(block, 'Pitch', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_bandwidth = Blockly.JavaScript.valueToCode(block, 'Bandwidth', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_volume = Blockly.JavaScript.valueToCode(block, 'Volume', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_audio_buffer = Blockly.JavaScript.valueToCode(block, 'Audio_buffer', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...';
+  return code;
+};
+
+Blockly.JavaScript['on_motion_trigger'] = function(block) {
+  var statements_name = Blockly.JavaScript.statementToCode(block, 'NAME');
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...';
+  return code;
+};
