@@ -116,6 +116,8 @@ Blockly.Blocks['onmotiontrigger'] = {
     this.setColour(LinkitzHue,LinkitzSaturation,LinkitzValue);
     this.setTooltip('Motion Trigger');
     this.setHelpUrl('http://www.example.com/');
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
   }
 };
 
@@ -399,6 +401,8 @@ Blockly.JavaScript['speakerpetal'] = function(block) {
 Blockly.Blocks['mic_event'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
+     this.appendDummyInput()
+        .appendField(new Blockly.FieldImage("../../images/Petal_Top_Mic_Preview.jpg", 64, 64, "GetMicData"));
     this.setColour(LinkitzHue,LinkitzSaturation,LinkitzValue);
     this.appendDummyInput()
         .appendField("MicEvent");
@@ -411,6 +415,8 @@ Blockly.Blocks['mic_event'] = {
         .setCheck("null")
         .appendField("Do:");
     this.setTooltip('');
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
   }
 };
 
