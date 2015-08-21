@@ -245,13 +245,39 @@ eg. speaker=siren, speaker+mic=voice distortion, speaker+mic+radio=walkie talkie
 With priority, we can end that collision.  Only the highest priority script is triggered
 */
 
+Blockly.Blocks['core_light'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Light Hub LEDs")
+        .appendField(new Blockly.FieldImage("../../images/core.jpg", 90, 90, "*"));
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.appendValueInput("NAME")
+        .setAlign(Blockly.ALIGN_CENTRE);
+    this.setInputsInline(false);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+    this.setColour(LinkitzHue,LinkitzSaturation,LinkitzValue);
+  }
+};
+
+Blockly.JavaScript['core_light'] = function(block) {
+  var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...';
+  return code;
+};
+
 
 Blockly.Blocks['roster_event'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(LinkitzHue,LinkitzSaturation,LinkitzValue);
     this.appendDummyInput()
-        .appendField("Roster Event Hander: ");
+        .appendField("Roster Event Hander: ")
+        .appendField(new Blockly.FieldImage("../../images/core.jpg", 90, 90, "*"));
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
     this.appendDummyInput()
         .appendField("I go off when These Links Are Connected");
     this.appendValueInput("LinkRoster")
@@ -276,7 +302,10 @@ Blockly.Blocks['roster_list'] = {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(LinkitzHue,LinkitzSaturation,LinkitzValue);
     this.appendDummyInput()
-        .appendField("Roster:");
+        .appendField("Roster:")
+        .appendField(new Blockly.FieldImage("../../images/core.jpg", 90, 90, "*"));
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
     this.appendValueInput("Link1")
         .setCheck("Array");
     this.appendValueInput("Link2")
@@ -307,7 +336,10 @@ Blockly.Blocks['roster_event_two'] = {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(LinkitzHue,LinkitzSaturation,LinkitzValue);
     this.appendDummyInput()
-        .appendField("Roster:");
+        .appendField("Roster:")
+        .appendField(new Blockly.FieldImage("../../images/core.jpg", 90, 90, "*"));
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
     this.appendDummyInput()
         .appendField(new Blockly.FieldDropdown([["none", "None"], ["Motion", "Motion"], ["LED", "LED"], ["Friend", "Friend"], ["Mic", "Mic"], ["Speaker", "Speaker"]]), "Link1");
     this.appendDummyInput()
@@ -345,9 +377,12 @@ Blockly.Blocks['connection_event'] = {
     this.setColour(LinkitzHue,LinkitzSaturation,LinkitzValue);
     this.appendDummyInput()
         .appendField("Connect Event")
+        .appendField(new Blockly.FieldImage("../../images/core.jpg", 90, 90, "*"))
         .appendField(new Blockly.FieldDropdown([["none", "None"], ["Motion", "Motion"], ["LED", "LED"], ["Friend", "Friend"], ["Mic", "Mic"], ["Speaker", "Speaker"]]), "Link");
     this.appendStatementInput("script");
     this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
     this.setTooltip('');
   }
 };
@@ -660,7 +695,7 @@ Blockly.JavaScript['math_foo'] = function(block) {
   return code;
 };
 
-BBlockly.JavaScript['radio_event'] = function(block) {
+Blockly.JavaScript['radio_event'] = function(block) {
   var dropdown_name = block.getFieldValue('NAME');
   var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
@@ -676,7 +711,7 @@ Blockly.JavaScript['speaker_play_sound'] = function(block) {
   return code;
 };
 
-BBlockly.JavaScript['sound_fdv'] = function(block) {
+Blockly.JavaScript['sound_fdv'] = function(block) {
   var value_frequency = Blockly.JavaScript.valueToCode(block, 'Frequency', Blockly.JavaScript.ORDER_ATOMIC);
   var value_duration = Blockly.JavaScript.valueToCode(block, 'Duration', Blockly.JavaScript.ORDER_ATOMIC);
   var value_volume = Blockly.JavaScript.valueToCode(block, 'Volume', Blockly.JavaScript.ORDER_ATOMIC);
